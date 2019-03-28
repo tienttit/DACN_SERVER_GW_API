@@ -1,0 +1,44 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  hostname: localhost
+apiEndpoints:
+  user:
+    host: localhost
+    paths: 
+    - '/user/*'
+  main:
+    host: localhost
+    paths: '*'
+serviceEndpoints:
+  user:
+    url: 'http://localhost:1338'
+  main:
+    url: 'http://localhost:1339'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  user:
+    apiEndpoints:
+      - user
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: user
+            changeOrigin: false
+  main:
+    apiEndpoints:
+      - main
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: main
+            changeOrigin: false
