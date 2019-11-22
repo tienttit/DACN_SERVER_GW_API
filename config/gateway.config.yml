@@ -2,29 +2,19 @@ http:
   port: 8000
 admin:
   port: 9876
-  hostname: localhost
+  host: localhost
 apiEndpoints:
-  user:
+  user-api:
     host: localhost
-    paths: 
-    - '/user/*'
-    - '/login'
-    - '/reset-password'
-    - '/forgot-password'
-    - '/change-password'
-    - '/request-email-confirm'
-    - '/confirm-email'
-    - '/signup'
-    - '/create-admin'
-    - '/login-with-google'
-  main:
+    paths: ['/user/*','/login','/reset-password','/forgot-password','/change-password','/request-email-confirm','/confirm-email','/signup','/create-admin','/login-with-google']
+  main-api:
     host: localhost
     paths: '*'
 serviceEndpoints:
-  user:
-    url: 'http://localhost:1338'
-  main:
-    url: 'http://localhost:1339'
+  user-sv:
+    url: 'http://tiyosys.ml:1338'
+  main-sv:
+    url: http://tiyosys.ml:1339'
 policies:
   - basic-auth
   - cors
@@ -37,17 +27,17 @@ policies:
 pipelines:
   user:
     apiEndpoints:
-      - user
+      - user-api
     policies:
       - proxy:
         - action:
-            serviceEndpoint: user
-            changeOrigin: false
+            serviceEndpoint: user-sv
+            changeOrigin: true
   main:
     apiEndpoints:
-      - main
+      - main-api
     policies:
       - proxy:
         - action:
-            serviceEndpoint: main
-            changeOrigin: false
+            serviceEndpoint: main-sv
+            changeOrigin: true
