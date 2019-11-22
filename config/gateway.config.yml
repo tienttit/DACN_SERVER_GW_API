@@ -5,16 +5,14 @@ admin:
   host: localhost
 apiEndpoints:
   user-api:
-    host: localhost
     paths: ['/user/*','/login','/reset-password','/forgot-password','/change-password','/request-email-confirm','/confirm-email','/signup','/create-admin','/login-with-google']
   main-api:
-    host: localhost
     paths: '*'
 serviceEndpoints:
   user-sv:
-    url: 'http://tiyosys.ml:1338'
+    url: 'http://10.128.0.2:1338'
   main-sv:
-    url: http://tiyosys.ml:1339'
+    url: 'http://10.128.0.2:1339'
 policies:
   - basic-auth
   - cors
