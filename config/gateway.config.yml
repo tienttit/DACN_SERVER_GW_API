@@ -1,5 +1,5 @@
 http:
-  port: 8080
+  port: 8000
 admin:
   port: 9876
   hostname: localhost
@@ -8,6 +8,15 @@ apiEndpoints:
     host: localhost
     paths: 
     - '/user/*'
+    - '/login'
+    - '/reset-password'
+    - '/forgot-password'
+    - '/change-password'
+    - '/request-email-confirm'
+    - '/confirm-email'
+    - '/signup'
+    - '/create-admin'
+    - '/login-with-google'
   main:
     host: localhost
     paths: '*'
