@@ -10,16 +10,16 @@ apiEndpoints:
     paths: '*'
 serviceEndpoints:
   user-sv:
-    url: 'http://10.128.0.2:1338'
+    url: 'http://tiyosys.ml:1338'
   main-sv:
     url: 'http://10.128.0.2:1339'
 policies:
-  - basic-auth
-  - cors
+  # - basic-auth
+  # - cors
   - expression
   - key-auth
   - log
-  - oauth2
+  # - oauth2
   - proxy
   - rate-limit
 pipelines:
