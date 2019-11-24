@@ -15,7 +15,10 @@ serviceEndpoints:
     url: 'http://10.128.0.2:1339'
 policies:
   # - basic-auth
-  # - cors
+  - cors:
+    action:
+      origin: '*'
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
   - expression
   - key-auth
   - log
